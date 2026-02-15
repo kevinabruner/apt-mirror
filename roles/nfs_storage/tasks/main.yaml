@@ -1,0 +1,20 @@
+
+- name: Ensure mount points exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: www-data
+    group: www-data
+  loop:
+    - "{{ nfs_target_dir }}"
+  become: true
+
+- name: Mount NFS Share
+  ansible.posix.mount:
+    path: "{{ nfs_target_dir }}"
+    src: "{{ nfs_server }}:{{ nfs_share }}"
+    fstype: nfs
+    opts: "{{ nfs_options | join(',') }}"
+    state: mounted
+  become: true
+

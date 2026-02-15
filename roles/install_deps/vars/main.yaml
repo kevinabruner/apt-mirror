@@ -1,0 +1,6 @@
+apt_packages:
+  - apt-mirror 
+  - apt-transport-https 
+  - ca-certificates
+  - apache2
+  - nfs-common

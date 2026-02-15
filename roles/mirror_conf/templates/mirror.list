@@ -1,0 +1,18 @@
+############# config #############
+# Set the local path for the mirror
+set base_path    /var/spool/apt-mirror
+#
+# Set the architecture (amd64 is default)
+set defaultarch  amd64
+set nthreads     20
+set _crypto_conf gpg
+############# end config #############
+
+# Ubuntu 24.04 (Noble Numbat) Repositories
+deb http://archive.ubuntu.com/ubuntu noble main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu noble-updates main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu noble-backports main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu noble-security main restricted universe multiverse
+
+# Clean up old packages
+clean http://archive.ubuntu.com/ubuntu
