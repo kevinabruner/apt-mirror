@@ -6,12 +6,12 @@
     owner: www-data
     group: www-data
   loop:
-    - "{{ nfs_target_dir }}"
+    - "{{ mirror_base_path }}"
   become: true
 
 - name: Mount NFS Share
   ansible.posix.mount:
-    path: "{{ nfs_target_dir }}"
+    path: "{{ mirror_base_path }}"
     src: "{{ nfs_server }}:{{ nfs_share }}"
     fstype: nfs
     opts: "{{ nfs_options | join(',') }}"
