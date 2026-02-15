@@ -1,5 +1,5 @@
 - name: Install apt-mirror and serve via apache
-  hosts: "repo_{{ target_app | default('UNDEFINED') }}:&env_dev"
+  hosts: "repo_apt_mirror"
   gather_facts: false
   roles:
     - install_deps
