@@ -1,6 +1,6 @@
 - name: Deploy mirror.list file
   ansible.builtin.template:
-    src: "mirror.list"
+    src: "mirror.list.j2"
     dest: "/etc/apt/mirror.list"
     owner: root
     group: root

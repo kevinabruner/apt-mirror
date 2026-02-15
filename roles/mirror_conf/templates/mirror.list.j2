@@ -1,0 +1,13 @@
+############# config #############
+set base_path    {{ mirror_base_path }}
+set defaultarch  amd64
+set nthreads     20
+set _crypto_conf gpg
+############# end config #############
+
+deb http://{{ mirror_server_name }}/ubuntu {{ mirror_ubuntu_version }} main restricted universe multiverse
+deb http://{{ mirror_server_name }}/ubuntu {{ mirror_ubuntu_version }}-updates main restricted universe multiverse
+deb http://{{ mirror_server_name }}/ubuntu {{ mirror_ubuntu_version }}-backports main restricted universe multiverse
+deb http://{{ mirror_server_name }}/ubuntu {{ mirror_ubuntu_version }}-security main restricted universe multiverse
+
+clean http://{{ mirror_server_name }}/ubuntu
