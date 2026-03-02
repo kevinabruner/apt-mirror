@@ -7,25 +7,16 @@
     mode: '0644'
   become: true
 
-- name: Create symbolic link for Ubuntu mirror
-  ansible.builtin.file:
+- name: Create symbolic link for Apache to serve the mirror
+  file:
     src: "{{ mirror_base_path }}/mirror/{{ mirror_server_name }}/ubuntu"
     dest: /var/www/html/ubuntu
     state: link
     force: yes
   become: true
 
-- name: Create symbolic link for Debian mirror
-  ansible.builtin.file:
-    # Note: Using the official Debian upstream hostname as reflected in the j2 template
-    src: "{{ mirror_base_path }}/mirror/deb.debian.org/debian"
-    dest: /var/www/html/debian
-    state: link
-    force: yes
-  become: true
-
 - name: Enable periodic apt-mirror updates via cron
-  ansible.builtin.cron:
+  cron:
     name: "Run apt-mirror daily"
     hour: "2"
     minute: "0"
