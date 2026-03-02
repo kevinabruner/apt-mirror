@@ -5,9 +5,18 @@ set nthreads     20
 set _crypto_conf gpg
 ############# end config #############
 
+# Ubuntu {{ mirror_ubuntu_version }}
 deb http://{{ mirror_server_name }}/ubuntu {{ mirror_ubuntu_version }} main restricted universe multiverse
 deb http://{{ mirror_server_name }}/ubuntu {{ mirror_ubuntu_version }}-updates main restricted universe multiverse
 deb http://{{ mirror_server_name }}/ubuntu {{ mirror_ubuntu_version }}-backports main restricted universe multiverse
 deb http://{{ mirror_server_name }}/ubuntu {{ mirror_ubuntu_version }}-security main restricted universe multiverse
 
+# Debian {{ mirror_debian_version }}
+deb http://deb.debian.org/debian {{ mirror_debian_version }} main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian {{ mirror_debian_version }}-updates main contrib non-free non-free-firmware
+deb http://security.debian.org/debian-security {{ mirror_debian_version }}-security main contrib non-free non-free-firmware
+
+# Clean instructions
 clean http://{{ mirror_server_name }}/ubuntu
+clean http://deb.debian.org/debian
+clean http://security.debian.org/debian-security
