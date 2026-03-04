@@ -24,6 +24,15 @@
     force: yes
   become: true
 
+- name: Create symbolic link for Debian security mirror
+  ansible.builtin.file:
+    # This matches the hostname used in your mirror.list.j2
+    src: "{{ mirror_base_path }}/mirror/security.debian.org/debian-security"
+    dest: /var/www/html/debian-security
+    state: link
+    force: yes
+  become: true
+
 - name: Enable periodic apt-mirror updates via cron
   ansible.builtin.cron:
     name: "Run apt-mirror daily"
