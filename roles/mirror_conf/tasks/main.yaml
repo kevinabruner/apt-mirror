@@ -17,7 +17,6 @@
 
 - name: Create symbolic link for Debian mirror
   ansible.builtin.file:
-    # Note: Using the official Debian upstream hostname as reflected in the j2 template
     src: "{{ mirror_base_path }}/mirror/deb.debian.org/debian"
     dest: /var/www/html/debian
     state: link
@@ -26,7 +25,6 @@
 
 - name: Create symbolic link for Debian security mirror
   ansible.builtin.file:
-    # This matches the hostname used in your mirror.list.j2
     src: "{{ mirror_base_path }}/mirror/security.debian.org/debian-security"
     dest: /var/www/html/debian-security
     state: link
