@@ -7,6 +7,24 @@
     mode: '0644'
   become: true
 
+- name: Configure Apache to follow symlinks for the mirror
+  ansible.builtin.copy:
+    dest: /etc/apache2/conf-available/apt-mirror.conf
+    content: |
+      <Directory /var/www/html>
+          Options +FollowSymLinks
+          AllowOverride None
+          Require all granted
+      </Directory>
+    mode: '0644'
+  become: true
+  notify: Restart apache
+
+- name: Enable the apt-mirror apache config
+  ansible.builtin.command: a2enconf apt-mirror
+  become: true
+  notify: Restart apache
+
 - name: Create symbolic link for Ubuntu mirror
   ansible.builtin.file:
     src: "{{ mirror_base_path }}/mirror/{{ mirror_server_name }}/ubuntu"
