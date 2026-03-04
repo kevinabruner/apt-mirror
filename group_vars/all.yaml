@@ -5,3 +5,4 @@ application: apt-mirror
 mirror_base_path: "/var/spool/apt-mirror"
 mirror_ubuntu_version: "noble"
 mirror_server_name: "archive.ubuntu.com"
+mirror_debian_version: "trixie"
